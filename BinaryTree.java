@@ -1,6 +1,6 @@
 
 /*
- * *** Emil Shahbazov / SECTION HERE ***
+ * *** Emil Shahbazov / SECTION 01 ***
  *
  * Homework # 2 (Programming Assignment). This Java class defines a few basic
  * manipulation operations of a binary trees.
@@ -337,6 +337,10 @@ public class BinaryTree {
 
     public double average() {
         int[] sumAndCount = averageHelper(root);
+
+        if (sumAndCount[1] == 0) {
+            return 0.0;
+        }  // avoid division by zero
         return (double) sumAndCount[0] / sumAndCount[1];
     }
 
@@ -344,7 +348,7 @@ public class BinaryTree {
 
 
         if (node == null) {
-            return new int[]{0, 0};
+            return new int[]{0, 0}; // begins at array with index 0
         }
 
         int[] left = averageHelper(node.left);
@@ -353,7 +357,7 @@ public class BinaryTree {
         int sum = node.data + left[0] + right[0];
         int count = 1 + left[1] + right[1];
 
-        return new int[]{sum, count};
+        return new int[]{sum, count}; // returns average
         // ADD YOUR CODE HERE -- USE DEPTH FIRST SEARCH OF
         // BINARY TREE (WHICH IS BASED ON RECURSION)
 
